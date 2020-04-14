@@ -56,8 +56,7 @@ npm install
 | id             | Number | ID number for single house        |
 | description    | String | Single house text description     |
 | photos         | Array  | Array of image_id numbers         |
-| house_number   | Number | Single house number               |
-| street         | Number | Single house number               |
+| street_address | Number | Single house number and street    |
 | city           | String | City name                         |
 | state          | Number | State name                        |
 
@@ -68,13 +67,49 @@ npm install
 | description    | String | Single image text description     |
 | url            | String | Array of house_id numbers        |
 
-
-### Read
+### CREATE
 
 ```sh
-/api/header_images/house
+/api/header_images/user/:userId
+/api/header_images/house/:houseId
+/api/header_images/image/:imageId
 ```
-GET house by ID example
+
+POST user example request body
+
+```sh
+
+{name: String, saved_houses: Number, liked_images: Number}
+
+```
+
+POST house example request body
+
+```sh
+
+{description: String, photos: Number, house_number: Number, street: String, city: String, state: String}
+
+```
+
+POST image example request body
+
+```sh
+
+{description: String, url: String}
+
+```
+
+RESPONSE:
+```sh
+Status Code 201
+```
+
+### READ
+
+```sh
+/api/header_images/house/:houseId
+```
+GET house by ID example response body
 
 ```sh
 
@@ -87,9 +122,9 @@ GET house by ID example
    }      
 
 ```
-
+/api/header_images/users/:userId
 ```
-GET user by prop ID example
+GET user by prop ID example response body
 
 ```sh
 
@@ -101,8 +136,9 @@ GET user by prop ID example
    }      
 
 ```
-
-GET image by ID example
+/api/header_images/images/:imageId
+```
+GET image by ID example response body
 
 ```sh
 
@@ -121,51 +157,15 @@ and
 an object (see example above)
 ```
 
-### Create
-
-```sh
-/api/user
-/api/house
-/api/image
-```
-
-POST user example
-
-```sh
-
-{name: String, saved_houses: Number, liked_images: Number}
-
-```
-
-POST house example
-
-```sh
-
-{description: String, photos: Number, house_number: Number, street: String, city: String, state: String}
-
-```
-
-POST image example
-
-```sh
-
-{description: String, url: String}
-
-```
-
-RESPONSE:
-```sh
-Status Code 201
-```
 ### UPDATE
 
 ```sh
-/api/user
-/api/house
-/api/image
+/api/header_images/user/:userId
+/api/header_images/house/:houseId
+/api/header_images/image/:imageId
 ```
 
-PUT user example
+PUT user example request body
 
 ```sh
 
@@ -173,7 +173,7 @@ PUT user example
 
 ```
 
-PUT house example
+PUT house example request body
 
 ```sh
 
@@ -181,7 +181,7 @@ PUT house example
 
 ```
 
-PUT image example
+PUT image example request body
 
 ```sh
 
@@ -197,12 +197,12 @@ Status Code 200
 ### DELETE
 
 ```sh
-/api/user
-/api/house
-/api/image
+/api/header_images/user/:userId
+/api/header_images/house/:houseId
+/api/header_images/image/:imageId
 ```
 
-Delete user example
+Delete user example request body
 
 ```sh
 
@@ -210,7 +210,7 @@ Delete user example
 
 ```
 
-Delete house example
+Delete house example request body
 
 ```sh
 
@@ -218,7 +218,7 @@ Delete house example
 
 ```
 
-Delete image example
+Delete image example request body
 
 ```sh
 
